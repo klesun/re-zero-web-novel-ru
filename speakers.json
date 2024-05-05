@@ -1,6 +1,6 @@
 [
     {"gender":"MALE","occurrences":11259,"name":"Narrator"},
-    {"gender":"MALE","occurrences":2307,"name":"Субару"},
+    {"gender":"MALE","occurrences":2307,"name":"Субару","pitchFactor": 1.1},
     {"gender":"MALE","occurrences":433,"name":"Гарфиэль"},
     {"gender":"MALE","occurrences":358,"name":"Юлиус"},
     {"gender":"MALE","occurrences":338,"name":"Отто"},
@@ -41,7 +41,8 @@
     {"gender":"MALE","occurrences":1,"name":"Че"},
 
     {"gender":"FEMALE","occurrences":672,"name":"Эмилия"},
-    {"gender":"FEMALE","occurrences":358,"name":"Беатрис"},
+    {"gender":"FEMALE","occurrences":358,"name":"Беатрис","pitchFactor": 1.2},
+    {"gender":"FEMALE","occurrences":1,"name":"Детский голос (Б)","sameAs": "Беатрис"},
     {"gender":"FEMALE","occurrences":319,"name":"Анастасия"},
     {"gender":"FEMALE","occurrences":273,"name":"Присцилла"},
     {"gender":"FEMALE","occurrences":264,"name":"Лилиана"},
@@ -67,6 +68,7 @@
     {"gender":"FEMALE","occurrences":5,"name":"Рафиэль"},
     {"gender":"FEMALE","occurrences":4,"name":"Лисий шарф", "sameAs": "Ехидна"},
     {"gender":"FEMALE","occurrences":4,"name":"\"Анастасия\""},
+    {"gender":"MALE","occurrences":1,"name":"Регулус Корниас", "sameAs": "Регулус"},
     {"gender":"FEMALE","occurrences":1,"name":"Тина"},
 
     {"gender":"UNKNOWN","occurrences":154,"name":"???"},
@@ -86,7 +88,6 @@
     {"gender":"UNKNOWN","occurrences":1,"name":"Молодой человек"},
     {"gender":"UNKNOWN","occurrences":1,"name":"Отто и Гарфиэль"},
     {"gender":"UNKNOWN","occurrences":1,"name":"Анастасия и Отто"},
-    {"gender":"UNKNOWN","occurrences":1,"name":"Регулус Корниас", "sameAs": "Регулус"},
     {"gender":"UNKNOWN","occurrences":1,"name":"Субару и Эмилия"},
     {"gender":"UNKNOWN","occurrences":1,"name":"Юлиус и Вильгельм"},
     {"gender":"UNKNOWN","occurrences":1,"name":"Регулус и Сириус"},
