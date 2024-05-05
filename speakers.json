@@ -46,6 +46,7 @@
     {"gender":"FEMALE","occurrences":319,"name":"Анастасия"},
     {"gender":"FEMALE","occurrences":273,"name":"Присцилла"},
     {"gender":"FEMALE","occurrences":264,"name":"Лилиана"},
+    {"gender":"FEMALE","occurrences":1,"name":"Детский голос (Л)","sameAs": "Лилиана"},
     {"gender":"FEMALE","occurrences":188,"name":"Сириус"},
     {"gender":"FEMALE","occurrences":135,"name":"Капелла"},
     {"gender":"FEMALE","occurrences":129,"name":"Мими"},
