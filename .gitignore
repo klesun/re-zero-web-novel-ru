@@ -1,4 +1,6 @@
 /.idea
 /unv
+/package-lock.json
 /speeches
+/special_speeches
 /node_modules
