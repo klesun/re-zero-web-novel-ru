@@ -3,8 +3,10 @@ import util from "util";
 import { exec } from "child_process";
 import ffmpeg from 'fluent-ffmpeg';
 import { promisify } from "util";
+import NodeID3, { TagConstants } from 'node-id3';
 
 const ffprobe = promisify(ffmpeg.ffprobe);
+const writeTags = promisify(NodeID3.write);
 
 function once(eventEmitter) {
     return new Promise((resolve, reject) => {
@@ -42,6 +44,7 @@ async function main() {
         speeches.push({
             speechPath: speechPath,
             startTime: lastEndTime,
+            text: p.text,
         });
         const metadata = await ffprobe(speechPath);
         lastEndTime += metadata.format.duration;
@@ -66,6 +69,49 @@ async function main() {
         .output('compiled_chap1_clean.mp3');
     mp3Conversion.run();
     await once(mp3Conversion);
+
+    await writeTags({
+        album: "Re:Zero Арка 5 Звёзды что Вершат Историю",
+        artist: "ru-RU-DmitryNeural",
+        artistUrl: "https://github.com/klesun/re-zero-web-novel-ru",
+        audioSourceUrl: "https://github.com/klesun/re-zero-web-novel-ru",
+        comment: "Generated using fan translations and Microsoft Text-to-Speech services",
+        composer: "klesun",
+        textWriter: "Эльрат",
+        chapter: 1,
+        trackNumber: 1,
+        title: chapters[0].title,
+        copyright: "2024 klesun CC BY 4.0 DEED Attribution 4.0 International",
+        copyrightUrl: "https://creativecommons.org/licenses/by/4.0/",
+        genre: "(183)Audiobook",
+        language: "rus",
+        originalTitle: "始まりはいつも来訪者から",
+        originalTextwriter: "長月達平",
+        originalReleaseTime: "2014-09-17",
+        image: await fetch("https://witchculttranslation.com/wp-content/uploads/2018/11/a5c1.png").then(async rs => {
+            const buff = await rs.arrayBuffer();
+            const mime = rs.headers.get("Content-Type");
+            console.log("image " + mime + " " + buff.byteLength);
+            return {
+                mime,
+                imageBuffer: Buffer.from(buff),
+                type: {
+                   id: TagConstants.AttachedPicture.PictureType.FRONT_COVER,
+                },
+                description: "Chapter Illustration",
+            };
+        }),
+        synchronisedLyrics: [{
+            language: "rus",
+            timeStampFormat: TagConstants.TimeStampFormat.MILLISECONDS,
+            contentType: TagConstants.SynchronisedLyrics.ContentType.LYRICS,
+            shortText: speeches.length + " speeches follow. SYLT frames are supported by PowerAmp and MusicBee players on the moment of writing. If you see this, then your player is trying to incorrectly interpret SYLT id3v2 tag as .lrc and it should be ashamed for adding to the confusion of the SYLT format.",
+            synchronisedText: speeches.map(speech => ({
+                text: speech.text,
+                timeStamp: Math.floor(speech.startTime * 1000),
+            })),
+        }],
+    }, "compiled_chap1_clean.mp3");
 }
 
 main().then(
