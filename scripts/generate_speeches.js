@@ -18,7 +18,7 @@ async function generateSpeech(msSpeakerId, text) {
         method: "POST",
         headers: {
             "X-Microsoft-OutputFormat": "ogg-48khz-16bit-mono-opus",
-            "Ocp-Apim-Subscription-Key": "7a31d8b2fdf2414d890464c4132eb167",
+            "Ocp-Apim-Subscription-Key": "REDACTED",
             "Content-Type": "application/ssml+xml",
         },
         body: `<speak version='1.0' xml:lang='ru-RU'>
@@ -39,7 +39,7 @@ const nameToSpeaker = Object.fromEntries(speakers.map(s => [s.name, s]));
 for (const chapter of chapters) {
     for (const paragraph of chapter.paragraphs) {
         let { id, speaker, text } = paragraph;
-        if (text.match(/^(\s*※\s*)+$/)) {
+        if (text.match(/^(\s*※\s*)+$/) || text.match(/^(\s*\*\s*)+$/)) {
             text = "... Некоторое время спустя...";
         }
         console.log("#" + id + " " + speaker + ": " + text);
@@ -49,7 +49,7 @@ for (const chapter of chapters) {
             ? "ru-RU-DmitryNeural"
             : "ru-RU-SvetlanaNeural";
         const speechOggBuff = await generateSpeech(msSpeakerId, text);
-        const outputFileName = id + ".ogg";
+        const outputFileName = id + ".oga";
         await fs.appendFile("./speeches/" + outputFileName, Buffer.from(speechOggBuff));
     }
 }

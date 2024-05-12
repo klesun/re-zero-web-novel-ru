@@ -18,6 +18,7 @@ for (let phase = 1; phase <= 6; ++phase) {
             phase: phase,
             chapter: chapterNumber,
             paragraphs: [...doc.querySelectorAll("p")]
+                .filter(p => p.textContent.trim() !== "")
                 .map((p, i) => {
                     // p.setAttribute("id", chapterNumber + "_" + String(i).padStart(4, "0"));
                     let text = p.textContent.trim().replace(/\s+/g, " ");
