@@ -79,9 +79,9 @@ const TRACK_TO_COVER_IMAGE_URL = {
     39: "https://witchculttranslation.com/wp-content/uploads/2018/11/a5c39-1024x570.png",
     40: "https://witchculttranslation.com/wp-content/uploads/2018/11/aldebaran_anime-1024x576.jpg",
     41: "",
-    42: "",
+    42: "https://ranobehub.org/api/media/22174",
     43: "https://witchculttranslation.com/wp-content/uploads/2018/10/reinhard_van_astrea_anime-1024x576.png",
-    44: "",
+    44: "https://ranobehub.org/api/media/40015",
     45: "https://witchculttranslation.com/wp-content/uploads/2018/09/619df63b0f4ba3d2ed74a239b0fabf2f.png",
     46: "",
     47: "https://witchculttranslation.com/wp-content/uploads/2018/09/julius-e1543358153757.jpg",
@@ -121,7 +121,7 @@ const TRACK_TO_COVER_IMAGE_URL = {
     81: "https://witchculttranslation.com/wp-content/uploads/2019/08/Anastasia.Hoshin.full_.2533540-e1566659016441-1024x736.jpg",
     82: "",
     83: "",
-    84: "",
+    84: "https://ranobehub.org/api/media/52723",
 };
 
 async function getImageCover(trackNumber) {
