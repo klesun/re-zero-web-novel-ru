@@ -1,5 +1,6 @@
 import { JSDOM } from "jsdom";
 import fs from "fs/promises";
+import {parseAttribution} from "./modules/parse_helpers.js";
 
 const chapters = [];
 for (let phase = 1; phase <= 6; ++phase) {
@@ -23,14 +24,11 @@ for (let phase = 1; phase <= 6; ++phase) {
                     // p.setAttribute("id", chapterNumber + "_" + String(i).padStart(4, "0"));
                     let text = p.textContent.trim().replace(/\s+/g, " ");
                     const asQuote = text.split(/\s*:\s*/g);
-                    let speaker = "Narrator"
-                    if (asQuote.length > 1) {
+                    const asAttribution = parseAttribution(text);
+                    let speaker = "Narrator";
+                    if (!asAttribution && asQuote.length > 1) {
                         const nameParts = asQuote[0].split(/\s+/g);
-                        if (asQuote[0] !== "Перевод" &&
-                            asQuote[0] !== "Редактура" &&
-                            asQuote[0] !== "Перевод и редактура" &&
-                            asQuote[0] !== "Перевод и Редактура" &&
-                            nameParts.length <= 3 ||
+                        if (nameParts.length <= 3 ||
                             asQuote[0] === "Член Чешуи Белого Дракона"
                         ) {
                             speaker = asQuote[0];
