@@ -18,7 +18,7 @@ async function generateSpeech(msSpeakerId, text) {
         method: "POST",
         headers: {
             "X-Microsoft-OutputFormat": "ogg-48khz-16bit-mono-opus",
-            "Ocp-Apim-Subscription-Key": "REDACTED",
+            "Ocp-Apim-Subscription-Key": "81693f28ed3d4ccb9e2d0073b895b111",
             "Content-Type": "application/ssml+xml",
         },
         body: `<speak version='1.0' xml:lang='ru-RU'>
