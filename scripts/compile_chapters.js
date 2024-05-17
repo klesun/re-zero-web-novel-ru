@@ -41,7 +41,7 @@ const nameToSpeaker = Object.fromEntries(speakers.map(s => [s.name, s]));
 async function getTags(chapter, trackNumber) {
     return {
         album: "Re:Zero Арка 5 Звёзды что Вершат Историю",
-        artist: "ru-RU-DmitryNeural",
+        artist: "Rusuba",
         artistUrl: "https://github.com/klesun/re-zero-web-novel-ru",
         audioSourceUrl: "https://github.com/klesun/re-zero-web-novel-ru",
         comment: "Generated using fan translations and Microsoft Text-to-Speech services",
@@ -49,7 +49,7 @@ async function getTags(chapter, trackNumber) {
         textWriter: chapter.translator,
         chapter: chapter.chapter,
         trackNumber: trackNumber,
-        title: chapter.title,
+        title: trackNumber + ". " + chapter.title,
         copyright: "2024 klesun CC BY 4.0 DEED Attribution 4.0 International",
         copyrightUrl: "https://creativecommons.org/licenses/by/4.0/",
         genre: "(183)Audiobook",
