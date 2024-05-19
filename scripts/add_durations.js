@@ -10,27 +10,7 @@ const speakers = JSON.parse(await fs.readFile("./speakers.json", "utf8"));
 
 const nameToSpeaker = Object.fromEntries(speakers.map(s => [s.name, s]));
 
-let i = 0;
 for (const chapter of chapters) {
-    if (++i < 26) {
-        chapter.translator = "Эльрат";
-    }
-    chapter.paragraphs = chapter.paragraphs
-        .filter(p => p.text.trim() !== "")
-        .filter(p => {
-            const asAttribution = p.speaker === "Narrator" && parseAttribution(p.text);
-            if (asAttribution) {
-                console.log("asAttribution", asAttribution);
-                if (asAttribution.translator) {
-                    chapter.translator = asAttribution.translator;
-                }
-                if (asAttribution.editor) {
-                    chapter.editor = asAttribution.editor;
-                }
-                return false;
-            }
-            return true;
-        });
     for (const p of chapter.paragraphs) {
         const speakerData = nameToSpeaker[p.speaker];
         const gender = !speakerData ? "UNKNOWN" : speakerData.gender;
