@@ -72,8 +72,8 @@ const TRACK_TO_COVER_IMAGE_URL = {
     32: "https://witchculttranslation.com/wp-content/uploads/2018/11/a5c32.png",
     33: "https://witchculttranslation.com/wp-content/uploads/2018/11/C33.png",
     34: "https://witchculttranslation.com/wp-content/uploads/2018/11/bsnxfp5a0yy11-e1543511565557-1024x469.jpg",
-    35: "https://witchculttranslation.com/wp-content/uploads/2018/11/a5c35-1024x568.jpg",
-    36: "https://witchculttranslation.com/wp-content/uploads/2018/11/plshz7qrvqi11-e1543514490768-1024x631.jpg",
+    35: "https://ranobehub.org/api/media/22137",
+    36: "https://ranobehub.org/api/media/40002",
     37: "https://witchculttranslation.com/wp-content/uploads/2018/11/a5c37.png",
     38: "https://witchculttranslation.com/wp-content/uploads/2018/11/c38.jpg",
     39: "https://witchculttranslation.com/wp-content/uploads/2018/11/a5c39-1024x570.png",
@@ -127,7 +127,7 @@ const TRACK_TO_COVER_IMAGE_URL = {
 async function getImageCover(trackNumber) {
     const url = TRACK_TO_COVER_IMAGE_URL[trackNumber];
     if (url) {
-        return fetch("https://witchculttranslation.com/wp-content/uploads/2018/11/a5c1.png").then(makeImageTag);
+        return fetch(url).then(makeImageTag);
     } else {
         return whenAlbumCover;
     }
